@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Museo Dinosauria · Centro Nacional de Paleontología</title>
-<meta name="description" content="Museo Dinosauria: 66 millones de años de historia. Vive la visión del T-rex, descubre nuestras salas, experiencias, horarios y entradas.">
+<meta name="description" content="Museo Dinosauria: vive la visión del T-rex en 3D, descubre nuestras salas, experiencias, horarios y entradas.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦖</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,18 +27,17 @@
   </nav>
 </header>
 
-<!-- ============ PORTADA + SECUENCIA DE SCROLL (T-REX → VISIÓN → CARRERA) ============ -->
-<section class="zoom-scroll" id="portada" aria-label="Portada: experiencia inmersiva del T-rex">
-  <div class="zoom-stage">
-    <div class="stage-shake" id="stageShake">
-      <div class="layer layer-trex" id="layerTrex"><img src="img/trex-hero.jpg" alt="Tyrannosaurus rex rugiendo en la selva del Cretácico"></div>
-      <div class="layer layer-pov" id="pov1"><img src="img/pov-selva.jpg" alt="Visión en primera persona del T-rex persiguiendo a la manada"></div>
-      <div class="layer layer-pov" id="pov2"><img src="img/persecucion.jpg" alt="El T-rex corre junto a Parasaurolophus y Triceratops"></div>
-    </div>
+<!-- ============ PORTADA 3D (T-REX → ZOOM AL OJO → VISIÓN POV → CARRERA) ============ -->
+<section class="scene-scroll" id="portada" aria-label="Portada 3D: experiencia inmersiva del T-rex">
+  <div class="scene-stage">
+    <canvas id="dinoCanvas"></canvas>
+
+    <!-- Viñeta + barras cinematográficas -->
     <div class="cine-bar top"></div>
     <div class="cine-bar bottom"></div>
-    <div class="pov-vignette"></div>
+    <div class="pov-vignette" id="vignette"></div>
 
+    <!-- Contenido hero -->
     <div class="hero-content" id="heroContent">
       <p class="hero-kicker">Centro Nacional de Paleontología · Madrid</p>
       <h1>MUSEO<br><span>DINOSAURIA</span></h1>
@@ -51,17 +50,22 @@
 
     <div class="scroll-hint" id="scrollHint"><span>Scroll: entra en la mente del T‑rex</span><i>▾</i></div>
 
+    <!-- HUD visión T-rex -->
     <div class="pov-hud" id="povHud">
       <div class="hud-top">
         <span class="hud-rec"></span> VISIÓN T‑REX · <span class="hud-speed"><b id="hudSpeed">0</b> km/h</span> · CRETÁCICO SUPERIOR, 66 M.A.
       </div>
     </div>
+
+    <!-- Subtítulos narrativos -->
     <div class="captions">
       <p class="hud-caption" id="capZoom">Acercándote al ojo del depredador…</p>
       <p class="hud-caption" id="cap1">Visión sincronizada: ya ves lo que ve el T‑rex. La manada ha captado tu olor.</p>
       <p class="hud-caption" id="cap2">32 km/h. Corres junto a la manada. El suelo tiembla con cada zancada.</p>
     </div>
+
     <div class="end-fade" id="endFade"></div>
+    <div class="loading-3d" id="loading3d">Cargando mundo 3D…</div>
   </div>
 </section>
 
@@ -107,7 +111,7 @@
     </div>
     <div class="cards">
       <article class="card reveal">
-        <img src="img/sala-rex.jpg" alt="Esqueleto de T-rex montado en la Gran Sala del museo" loading="lazy">
+        <div class="card-visual v-rex"></div>
         <div class="card-body">
           <h3>Gran Sala · “Rexina”, el T‑rex</h3>
           <p>El esqueleto de T‑rex más completo de Europa, en pose de caza bajo un foco cenital. Cada hora en punto, un show de luz y narración la “resucita” ante tus ojos.</p>
@@ -115,7 +119,7 @@
         </div>
       </article>
       <article class="card reveal">
-        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/166723f69-1b94-4dde-8341-6fec883653cb2082.png" alt="Esqueletos de saurópodos gigantes en la Galería de los Gigantes" loading="lazy">
+        <div class="card-visual v-sauropod"></div>
         <div class="card-body">
           <h3>Galería de los Gigantes</h3>
           <p>Diplodocus, Argentinosaurus y Braquiosaurios suspendidos sobre tu cabeza. Treinta metros de pasarela bajo los cuellos más largos de la historia del planeta.</p>
@@ -123,7 +127,7 @@
         </div>
       </article>
       <article class="card reveal">
-        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/566723f69-1b94-4dde-8341-6fec883653cb5782.png" alt="Proyección inmersiva de un Triceratops a tamaño real con visitantes" loading="lazy">
+        <div class="card-visual v-cretacico"></div>
         <div class="card-body">
           <h3>Cretácico Viviente</h3>
           <p>Animatronics a escala real y proyecciones 360°: Triceratops, Parasaurolophus y Velociraptors que se mueven, respiran y suenan como hace 66 millones de años.</p>
@@ -131,7 +135,7 @@
         </div>
       </article>
       <article class="card reveal">
-        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/666723f69-1b94-4dde-8341-6fec883653cb4424.png" alt="Paleontóloga preparando un fósil real en el laboratorio del museo" loading="lazy">
+        <div class="card-visual v-lab"></div>
         <div class="card-body">
           <h3>El Laboratorio Vivo</h3>
           <p>Observa a paleontólogos reales preparando fósiles tras una cristalera. Y si te atreves: excava en el arenero y quédate tu propio fósil réplica.</p>
@@ -141,11 +145,12 @@
     </div>
     <p class="notes reveal">También incluido con tu entrada general: Sala del Ámbar y del Meteorito · sesión estándar del Domo · show de “alimentación” del T‑rex · zona de descanso y área de juego infantil.</p>
 
+    <!-- Galería de "salas" generada con CSS/SVG (sin fotos externas) -->
     <div class="gallery reveal">
-      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/766723f69-1b94-4dde-8341-6fec883653cb4646.png" alt="Sala clásica de dinosaurios con esqueletos montados" loading="lazy"><figcaption>Sala de los Terópodos</figcaption></figure>
-      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/466723f69-1b94-4dde-8341-6fec883653cb4307.png" alt="Cráneo de T-rex en primer plano" loading="lazy"><figcaption>Cráneo de “Rexina”, detalle</figcaption></figure>
-      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/366723f69-1b94-4dde-8341-6fec883653cb4542.png" alt="Visitas nocturnas con iluminación azul entre esqueletos" loading="lazy"><figcaption>Noche entre Dinosaurios</figcaption></figure>
-      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/166723f69-1b94-4dde-8341-6fec883653cb2071.png" alt="Familia observando un esqueleto gigante de saurópodo" loading="lazy"><figcaption>Galería de los Gigantes</figcaption></figure>
+      <figure><div class="g-img g1"></div><figcaption>Sala de los Terópodos</figcaption></figure>
+      <figure><div class="g-img g2"></div><figcaption>Cráneo de “Rexina”, detalle</figcaption></figure>
+      <figure><div class="g-img g3"></div><figcaption>Noche entre Dinosaurios</figcaption></figure>
+      <figure><div class="g-img g4"></div><figcaption>Galería de los Gigantes</figcaption></figure>
     </div>
   </div>
 </section>
@@ -173,7 +178,7 @@
       </article>
       <article class="exp exp-vr reveal">
         <div class="exp-head"><span class="exp-icon">🥽</span><h3>Realidad Virtual “Viaje al Cretácico”</h3><span class="price-chip">+8 €</span></div>
-        <p>Corre por la selva dentro de la piel de un T‑rex: la misma experiencia que abre esta web, pero con viento, rugidos y el suelo temblando bajo tus pies.</p>
+        <p>Corre por la selva dentro de la piel de un T‑rex: la misma experiencia 3D que abre esta web, pero con viento, rugidos y el suelo temblando bajo tus pies.</p>
         <div class="exp-meta"><span>⏱ 20 min</span><span>📍 Sala VR, planta −1</span></div>
         <ul class="times"><li>Cada 15 min</li><li>10:00–19:30</li></ul>
       </article>
@@ -368,9 +373,17 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> Museo Dinosauria · Sitio de demostración</span>
+      <span>© <span id="year"></span> Museo Dinosauria · Escena 3D generada con Three.js</span>
       <span>Hecho con 🦖 y mucho Cretácico</span>
     </div>
+  </div>
+</footer>
+
+<!-- Three.js desde CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
   </div>
 </footer>
 
