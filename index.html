@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museo Dinosauria · Centro Nacional de Paleontología</title>
+<meta name="description" content="Museo Dinosauria: 66 millones de años de historia. Vive la visión del T-rex, descubre nuestras salas, experiencias, horarios y entradas.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <a class="brand" href="#portada">🦖 MUSEO <b>DINOSAURIA</b></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav">
+    <a href="#museo">El museo</a>
+    <a href="#exposiciones">Exposiciones</a>
+    <a href="#experiencias">Experiencias</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#visita">Tu visita</a>
+    <a href="#entradas" class="btn btn-small">Entradas</a>
+  </nav>
+</header>
+
+<!-- ============ PORTADA + SECUENCIA DE SCROLL (T-REX → VISIÓN → CARRERA) ============ -->
+<section class="zoom-scroll" id="portada" aria-label="Portada: experiencia inmersiva del T-rex">
+  <div class="zoom-stage">
+    <div class="stage-shake" id="stageShake">
+      <div class="layer layer-trex" id="layerTrex"><img src="img/trex-hero.jpg" alt="Tyrannosaurus rex rugiendo en la selva del Cretácico"></div>
+      <div class="layer layer-pov" id="pov1"><img src="img/pov-selva.jpg" alt="Visión en primera persona del T-rex persiguiendo a la manada"></div>
+      <div class="layer layer-pov" id="pov2"><img src="img/persecucion.jpg" alt="El T-rex corre junto a Parasaurolophus y Triceratops"></div>
+    </div>
+    <div class="cine-bar top"></div>
+    <div class="cine-bar bottom"></div>
+    <div class="pov-vignette"></div>
+
+    <div class="hero-content" id="heroContent">
+      <p class="hero-kicker">Centro Nacional de Paleontología · Madrid</p>
+      <h1>MUSEO<br><span>DINOSAURIA</span></h1>
+      <p class="hero-sub">66 millones de años de historia bajo un mismo techo. Cara a cara con el rey del Cretácico… y luego, dentro de su cabeza.</p>
+      <div class="hero-cta">
+        <a href="#entradas" class="btn">Comprar entradas</a>
+        <a href="#exposiciones" class="btn btn-ghost">Ver exposiciones</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint"><span>Scroll: entra en la mente del T‑rex</span><i>▾</i></div>
+
+    <div class="pov-hud" id="povHud">
+      <div class="hud-top">
+        <span class="hud-rec"></span> VISIÓN T‑REX · <span class="hud-speed"><b id="hudSpeed">0</b> km/h</span> · CRETÁCICO SUPERIOR, 66 M.A.
+      </div>
+    </div>
+    <div class="captions">
+      <p class="hud-caption" id="capZoom">Acercándote al ojo del depredador…</p>
+      <p class="hud-caption" id="cap1">Visión sincronizada: ya ves lo que ve el T‑rex. La manada ha captado tu olor.</p>
+      <p class="hud-caption" id="cap2">32 km/h. Corres junto a la manada. El suelo tiembla con cada zancada.</p>
+    </div>
+    <div class="end-fade" id="endFade"></div>
+  </div>
+</section>
+
+<!-- ============ BANNER CITA ============ -->
+<section class="banner">
+  <blockquote>“Esto no es un museo.<br>Es una máquina del tiempo.”</blockquote>
+  <p>— Revista GeoHistoria, 2025</p>
+</section>
+
+<main>
+<!-- ============ EL MUSEO ============ -->
+<section id="museo" class="section">
+  <div class="container two-col">
+    <div class="reveal">
+      <p class="kicker">El museo</p>
+      <h2>Un viaje al reinado de los dinosaurios</h2>
+      <p class="lead">Inaugurado en 1998, el Museo Dinosauria es el mayor centro de interpretación de dinosaurios de Europa. Sus 4.500 m² de exposición albergan más de 120 esqueletos completos, 35 holotipos y una de las mejores colecciones de fósiles del Cretácico del mundo.</p>
+      <p class="lead">La pieza estrella es <b>“Rexina”</b>: un Tyrannosaurus rex de 67 millones de años, 12,4 m de longitud y 4,2 m de altura, con un 92 % de huesos originales. A su alrededor, un recorrido por el Triásico, el Jurásico y el Cretácico que combina fósiles reales, recreaciones científicas y tecnología inmersiva.</p>
+      <p class="lead">El museo mantiene equipos propios de investigación y excavación en Teruel (España) y Patagonia (Argentina), y cada año presenta al menos dos nuevos especímenes al público.</p>
+      <ul class="checklist">
+        <li>Fósiles reales y propios, no réplicas comerciales</li>
+        <li>Equipo científico activo con excavaciones anuales</li>
+        <li>Recorrido 100 % accesible y adaptado</li>
+        <li>Tecnología inmersiva y realidad virtual pionera en Europa</li>
+      </ul>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><span class="stat-num" data-target="120">0</span><span class="stat-label">esqueletos completos</span></div>
+      <div class="stat"><span class="stat-num" data-target="4500">0</span><span class="stat-label">m² de exposición</span></div>
+      <div class="stat"><span class="stat-num" data-target="850">0</span><span class="stat-label">mil visitantes al año</span></div>
+      <div class="stat"><span class="stat-num" data-target="35">0</span><span class="stat-label">holotipos únicos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPOSICIONES ============ -->
+<section id="exposiciones" class="section section-alt">
+  <div class="container">
+    <div class="reveal">
+      <p class="kicker">Exposiciones permanentes</p>
+      <h2>Qué incluye tu entrada general</h2>
+      <p class="lead">Con la entrada general accedes a todas las salas permanentes, a estas cuatro grandes exposiciones y a la temporal 2026: <b>“Gigantes con plumas: los dinosaurios de China”</b>.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <img src="img/sala-rex.jpg" alt="Esqueleto de T-rex montado en la Gran Sala del museo" loading="lazy">
+        <div class="card-body">
+          <h3>Gran Sala · “Rexina”, el T‑rex</h3>
+          <p>El esqueleto de T‑rex más completo de Europa, en pose de caza bajo un foco cenital. Cada hora en punto, un show de luz y narración la “resucita” ante tus ojos.</p>
+          <span class="tag">Incluido en entrada general</span>
+        </div>
+      </article>
+      <article class="card reveal">
+        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/166723f69-1b94-4dde-8341-6fec883653cb2082.png" alt="Esqueletos de saurópodos gigantes en la Galería de los Gigantes" loading="lazy">
+        <div class="card-body">
+          <h3>Galería de los Gigantes</h3>
+          <p>Diplodocus, Argentinosaurus y Braquiosaurios suspendidos sobre tu cabeza. Treinta metros de pasarela bajo los cuellos más largos de la historia del planeta.</p>
+          <span class="tag">Incluido en entrada general</span>
+        </div>
+      </article>
+      <article class="card reveal">
+        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/566723f69-1b94-4dde-8341-6fec883653cb5782.png" alt="Proyección inmersiva de un Triceratops a tamaño real con visitantes" loading="lazy">
+        <div class="card-body">
+          <h3>Cretácico Viviente</h3>
+          <p>Animatronics a escala real y proyecciones 360°: Triceratops, Parasaurolophus y Velociraptors que se mueven, respiran y suenan como hace 66 millones de años.</p>
+          <span class="tag">Incluido en entrada general</span>
+        </div>
+      </article>
+      <article class="card reveal">
+        <img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/666723f69-1b94-4dde-8341-6fec883653cb4424.png" alt="Paleontóloga preparando un fósil real en el laboratorio del museo" loading="lazy">
+        <div class="card-body">
+          <h3>El Laboratorio Vivo</h3>
+          <p>Observa a paleontólogos reales preparando fósiles tras una cristalera. Y si te atreves: excava en el arenero y quédate tu propio fósil réplica.</p>
+          <span class="tag">Incluido en entrada general</span>
+        </div>
+      </article>
+    </div>
+    <p class="notes reveal">También incluido con tu entrada general: Sala del Ámbar y del Meteorito · sesión estándar del Domo · show de “alimentación” del T‑rex · zona de descanso y área de juego infantil.</p>
+
+    <div class="gallery reveal">
+      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/766723f69-1b94-4dde-8341-6fec883653cb4646.png" alt="Sala clásica de dinosaurios con esqueletos montados" loading="lazy"><figcaption>Sala de los Terópodos</figcaption></figure>
+      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/466723f69-1b94-4dde-8341-6fec883653cb4307.png" alt="Cráneo de T-rex en primer plano" loading="lazy"><figcaption>Cráneo de “Rexina”, detalle</figcaption></figure>
+      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/366723f69-1b94-4dde-8341-6fec883653cb4542.png" alt="Visitas nocturnas con iluminación azul entre esqueletos" loading="lazy"><figcaption>Noche entre Dinosaurios</figcaption></figure>
+      <figure><img src="https://image.qwenlm.ai/public_source/2e9c7770-b636-4c2f-a623-876261fd4450/166723f69-1b94-4dde-8341-6fec883653cb2071.png" alt="Familia observando un esqueleto gigante de saurópodo" loading="lazy"><figcaption>Galería de los Gigantes</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIAS ============ -->
+<section id="experiencias" class="section">
+  <div class="container">
+    <div class="reveal">
+      <p class="kicker">Experiencias</p>
+      <h2>Más allá de las vitrinas</h2>
+      <p class="lead">Estas experiencias tienen aforo limitado y <b>horario propio</b>. No están incluidas en la entrada general, salvo donde se indica. Reserva online recomendada.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="exp reveal">
+        <div class="exp-head"><span class="exp-icon">🧭</span><h3>Visita guiada “Tras los fósiles”</h3><span class="price-chip">+6 €</span></div>
+        <p>Un paleontólogo te abre los almacenes de la colección: holotipos reales, piezas en estudio y las historias que ningún cartel cuenta.</p>
+        <div class="exp-meta"><span>⏱ 45 min</span><span>📍 Punto de encuentro: Gran Sala</span></div>
+        <ul class="times"><li>10:30</li><li>12:00</li><li>16:00</li></ul>
+      </article>
+      <article class="exp reveal">
+        <div class="exp-head"><span class="exp-icon">⛏️</span><h3>Taller “Pequeño Paleontólogo”</h3><span class="price-chip">+5 €</span></div>
+        <p>Excavación real en el arenero del laboratorio: pincel, yeso y carné de excavador. Cada niño se lleva su fósil réplica a casa. De 4 a 12 años.</p>
+        <div class="exp-meta"><span>⏱ 30 min</span><span>📍 Laboratorio Vivo</span></div>
+        <ul class="times"><li>11:00–14:00</li><li>16:30–19:00</li><li>pases cada 30 min</li></ul>
+      </article>
+      <article class="exp exp-vr reveal">
+        <div class="exp-head"><span class="exp-icon">🥽</span><h3>Realidad Virtual “Viaje al Cretácico”</h3><span class="price-chip">+8 €</span></div>
+        <p>Corre por la selva dentro de la piel de un T‑rex: la misma experiencia que abre esta web, pero con viento, rugidos y el suelo temblando bajo tus pies.</p>
+        <div class="exp-meta"><span>⏱ 20 min</span><span>📍 Sala VR, planta −1</span></div>
+        <ul class="times"><li>Cada 15 min</li><li>10:00–19:30</li></ul>
+      </article>
+      <article class="exp reveal">
+        <div class="exp-head"><span class="exp-icon">🎬</span><h3>Domo “Impacto: el último día”</h3><span class="price-chip">+4 €</span></div>
+        <p>Proyección 8K bajo una cúpula de 12 metros: el último día del Cretácico, minuto a minuto, desde el cielo de Yucatán hasta el impacto final.</p>
+        <div class="exp-meta"><span>⏱ 30 min</span><span>📍 Domo central</span></div>
+        <ul class="times"><li>11:00</li><li>13:00</li><li>15:00</li><li>17:00</li><li>19:00</li></ul>
+      </article>
+      <article class="exp reveal">
+        <div class="exp-head"><span class="exp-icon">🌙</span><h3>Noche entre Dinosaurios</h3><span class="price-chip">45 €</span></div>
+        <p>Cena bajo el Diplodocus, visita con linternas a las salas apagadas y desayuno entre titanosaurios. Sacos incluidos. Desde 8 años.</p>
+        <div class="exp-meta"><span>⏱ 22:00–08:00</span><span>📍 Vestíbulo central</span></div>
+        <ul class="times"><li>Viernes</li><li>Sábado</li></ul>
+      </article>
+      <article class="exp reveal">
+        <div class="exp-head"><span class="exp-icon">🦖</span><h3>Show de “alimentación” del T‑rex</h3><span class="price-chip free">Incluido</span></div>
+        <p>El animatronic de la Gran Sala devora su “presa” mientras un guía explica la biomecánica real de la mordida más potente de la historia.</p>
+        <div class="exp-meta"><span>⏱ 20 min</span><span>📍 Gran Sala</span></div>
+        <ul class="times"><li>13:00</li><li>18:00</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTRADAS ============ -->
+<section id="entradas" class="section section-alt">
+  <div class="container">
+    <div class="reveal">
+      <p class="kicker">Entradas</p>
+      <h2>Tipos de entrada y precios</h2>
+      <p class="lead">Compra en taquilla o online (con 1 € de descuento por entrada). Todos los precios incluyen IVA y el acceso a las exposiciones permanentes y la temporal 2026.</p>
+    </div>
+    <div class="prices">
+      <article class="price-card reveal">
+        <h3>General adulto</h3>
+        <div class="amount">14<sup>€</sup></div>
+        <ul><li>Todas las salas y exposiciones permanentes</li><li>Temporal “Gigantes con plumas”</li><li>Show de alimentación del T‑rex</li><li>Audioguía opcional (+3 €)</li></ul>
+        <a class="btn btn-ghost" href="#horarios">Ver horarios</a>
+      </article>
+      <article class="price-card reveal">
+        <h3>Reducida</h3>
+        <div class="amount">9<sup>€</sup></div>
+        <ul><li>Mayores de 65 años</li><li>Estudiantes hasta 25 años</li><li>Familias numerosas y discapacidad acreditada</li><li>Necesario documento acreditativo</li></ul>
+        <a class="btn btn-ghost" href="#horarios">Ver horarios</a>
+      </article>
+      <article class="price-card reveal">
+        <h3>Infantil</h3>
+        <div class="amount">7<sup>€</sup></div>
+        <ul><li>De 4 a 12 años</li><li>Menores de 4 años: gratis</li><li>Incluye 1 excavación en el arenero</li><li>Cumpleaños: entrada gratis el día de tu cumple</li></ul>
+        <a class="btn btn-ghost" href="#horarios">Ver horarios</a>
+      </article>
+      <article class="price-card reveal">
+        <h3>Familiar</h3>
+        <div class="amount">36<sup>€</sup></div>
+        <ul><li>2 adultos + 2 niños</li><li>+6 € por niño adicional</li><li>Incluye 2 excavaciones en el arenero</li><li>Acceso prioritario los domingos</li></ul>
+        <a class="btn btn-ghost" href="#horarios">Ver horarios</a>
+      </article>
+      <article class="price-card featured reveal">
+        <span class="ribbon">Ahorra 7 €</span>
+        <h3>Pase “Dino Total”</h3>
+        <div class="amount">24<sup>€</sup></div>
+        <ul><li>Entrada general completa</li><li>Realidad Virtual “Viaje al Cretácico”</li><li>Taller “Pequeño Paleontólogo”</li><li>Sesión del Domo el mismo día</li></ul>
+        <a class="btn" href="#horarios">El más completo</a>
+      </article>
+      <article class="price-card reveal">
+        <h3>Pase anual “Club Dinosauria”</h3>
+        <div class="amount">40<sup>€</sup></div>
+        <ul><li>Acceso ilimitado durante 1 año</li><li>2 invitaciones para acompañantes</li><li>10 % de dto. en tienda y cafetería</li><li>Prioridad en Noche entre Dinosaurios</li></ul>
+        <a class="btn btn-ghost" href="#visita">Hazte socio</a>
+      </article>
+    </div>
+    <p class="notes reveal">· Primer domingo de cada mes: entrada gratuita a las salas generales (10:00–20:00). · La Noche entre Dinosaurios (45 €) y la visita guiada (+6 €) se reservan solo online. · Menores de 12 años siempre acompañados de un adulto.</p>
+  </div>
+</section>
+
+<!-- ============ HORARIOS ============ -->
+<section id="horarios" class="section">
+  <div class="container">
+    <div class="reveal">
+      <p class="kicker">Horarios</p>
+      <h2>Horario general y de actividades</h2>
+      <p class="lead">Último acceso una hora antes del cierre. Las salas comienzan a desalojarse 15 minutos antes.</p>
+    </div>
+    <div class="sched-grid">
+      <div class="table-card reveal">
+        <h3>🕰 Horario general del museo</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Día</th><th>Horario</th></tr></thead>
+            <tbody>
+              <tr><td><b>Martes a domingo</b></td><td>10:00 – 20:00</td></tr>
+              <tr><td><b>Julio y agosto</b></td><td>10:00 – 22:00</td></tr>
+              <tr><td><b>Lunes</b></td><td>Cerrado (excepto festivos)</td></tr>
+              <tr><td><b>Primer domingo de mes</b></td><td>10:00 – 20:00 · entrada gratuita</td></tr>
+              <tr><td><b>24 y 31 de diciembre</b></td><td>10:00 – 15:00</td></tr>
+              <tr><td><b>25 dic y 1 ene</b></td><td>Cerrado</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="table-card reveal">
+        <h3>🎟 Horario de actividades y experiencias</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Actividad</th><th>Días</th><th>Pases</th><th>Precio</th></tr></thead>
+            <tbody>
+              <tr><td><b>Visita guiada “Tras los fósiles”</b></td><td>Ma–Do</td><td>10:30 · 12:00 · 16:00</td><td><span class="pill extra">+6 €</span></td></tr>
+              <tr><td><b>Taller “Pequeño Paleontólogo”</b></td><td>Ma–Do</td><td>11:00–14:00 · 16:30–19:00</td><td><span class="pill extra">+5 €</span></td></tr>
+              <tr><td><b>VR “Viaje al Cretácico”</b></td><td>Ma–Do</td><td>Cada 15 min, 10:00–19:30</td><td><span class="pill extra">+8 €</span></td></tr>
+              <tr><td><b>Domo “Impacto: el último día”</b></td><td>Ma–Do</td><td>11:00 · 13:00 · 15:00 · 17:00 · 19:00</td><td><span class="pill extra">+4 €</span></td></tr>
+              <tr><td><b>Noche entre Dinosaurios</b></td><td>Vi y Sá</td><td>22:00 – 08:00</td><td><span class="pill extra">45 €</span></td></tr>
+              <tr><td><b>Show de alimentación del T‑rex</b></td><td>Ma–Do</td><td>13:00 · 18:00</td><td><span class="pill inc">Incluido</span></td></tr>
+              <tr><td><b>“Resurrección” narrada de Rexina</b></td><td>Ma–Do</td><td>Cada hora en punto</td><td><span class="pill inc">Incluido</span></td></tr>
+              <tr><td><b>Visita guiada en lengua de signos</b></td><td>Sábados</td><td>12:00</td><td><span class="pill inc">Gratis con reserva</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TU VISITA ============ -->
+<section id="visita" class="section section-alt">
+  <div class="container">
+    <div class="reveal">
+      <p class="kicker">Tu visita</p>
+      <h2>Cómo llegar y planificar tu visita</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="vcard reveal">
+        <h3>📍 Dirección y transporte</h3>
+        <ul>
+          <li>Paseo del Cretácico 1, 28014 Madrid</li>
+          <li>Metro L2, estación “Museo” (salida 3)</li>
+          <li>Autobús 14 · 32 · 45</li>
+          <li>Parking 300 plazas: 2 h gratis con tu entrada</li>
+        </ul>
+      </div>
+      <div class="vcard reveal">
+        <h3>🎒 Servicios</h3>
+        <ul>
+          <li>Guardarropa y préstamo de carritos</li>
+          <li>Cafetería “El Ámbar” y zona de picnic</li>
+          <li>Tienda con réplicas y ciencia</li>
+          <li>Wi‑Fi gratis y audioguía en 6 idiomas (+3 €)</li>
+        </ul>
+      </div>
+      <div class="vcard reveal">
+        <h3>♿ Accesibilidad</h3>
+        <ul>
+          <li>Recorrido sin barreras y ascensores</li>
+          <li>Sillas de ruedas gratuitas en consignas</li>
+          <li>Visita en lengua de signos: sábados 12:00</li>
+          <li>Sala tranquila y perros de asistencia bienvenidos</li>
+        </ul>
+      </div>
+      <div class="vcard reveal">
+        <h3>📞 Contacto y grupos</h3>
+        <ul>
+          <li>+34 910 123 456</li>
+          <li>visitas@museodinosauria.es</li>
+          <li>grupos@museodinosauria.es</li>
+          <li>Grupos de +10 personas: 20 % de descuento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#portada">🦖 MUSEO <b>DINOSAURIA</b></a>
+        <p class="lead" style="margin-top:14px">66 millones de años te esperan. Centro Nacional de Paleontología, Madrid.</p>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <a href="#museo">El museo</a><a href="#exposiciones">Exposiciones</a><a href="#experiencias">Experiencias</a><a href="#entradas">Entradas</a>
+      </div>
+      <div>
+        <h4>Horario destacado</h4>
+        <a href="#horarios">Ma–Do · 10:00–20:00</a><a href="#horarios">Jul–Ago · 10:00–22:00</a><a href="#horarios">Noches: Vi y Sá · 22:00</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34910123456">+34 910 123 456</a><a href="mailto:visitas@museodinosauria.es">visitas@museodinosauria.es</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Museo Dinosauria · Sitio de demostración</span>
+      <span>Hecho con 🦖 y mucho Cretácico</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
